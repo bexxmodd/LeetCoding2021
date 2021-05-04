@@ -21,7 +21,6 @@ def one_away(s1: str, s2: str) -> bool:
             elif len(s1) < len(s2):
                 j += 1
         
-        
         i += 1
         j += 1
         if edit > 1:
