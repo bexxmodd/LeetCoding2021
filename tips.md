@@ -1,4 +1,5 @@
-- When questions asks to find common elements in words, lists etc. Good strategy is to user `Counter` from collections and `&` the entities you want to compare.
+- When questions asks to find common elements in strings, lists etc. Good strategy is to user 
+    `Counter` from collections and `&` the entities you want to compare.
 
 
 Example for finding common characters in words:
@@ -27,3 +28,12 @@ for i in count:
     val, n = i
     res.extend([val] * i)
 ```
+
+-----
+**Stacks** are useful in certain recursive algorithms. Sometimes you need to push
+temporary data onto a stack as you recurse, but then remove them as you backtrack (for example, because
+the recursive check failed).
+
+In breadth-first search, for example, we used a **queue** to store a list of the nodes that we need to process.
+Each time we process a node, we add its adjacent nodes to the back of the queue. This allows us to process
+nodes in the order in which they are viewed.

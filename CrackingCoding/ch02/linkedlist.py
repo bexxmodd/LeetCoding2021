@@ -104,6 +104,34 @@ class LinkedList:
             cur = cur.next
         return res
 
+    def palindrome(self) -> bool:
+        cur = self.head
+        rev = LinkedList()
+        while cur:
+            rev.add_to_head(cur.val)
+            cur = cur.next
+        rev.print_nodes()
+        cur = self.head
+        while cur and rev:
+            if cur.val != rev.head.val:
+                return False
+            cur = cur.next
+            rev.head = rev.head.next
+        return True
+
+    def reverse(self) -> None:
+        if not self.head:
+            return
+        prev = None
+        cur = self.head
+        while cur:
+            nxt = cur.next
+            cur.next = prev
+            prev = cur
+            cur = nxt
+        self.head = prev
+
+
 if __name__ == '__main__':
     llist = LinkedList()
     llist.add_to_end(1)
@@ -135,4 +163,10 @@ if __name__ == '__main__':
     llist2 = LinkedList()
     llist2.add_to_end(1)
     llist2.add_to_end(5)
+    llist2.add_to_end(1)
     print(llist.sum_lists(llist2))
+
+    llist.reverse()
+    llist.print_nodes()
+    print(llist.palindrome())
+    print(llist2.palindrome())
