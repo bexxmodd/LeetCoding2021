@@ -37,3 +37,23 @@ the recursive check failed).
 In breadth-first search, for example, we used a **queue** to store a list of the nodes that we need to process.
 Each time we process a node, we add its adjacent nodes to the back of the queue. This allows us to process
 nodes in the order in which they are viewed.
+
+--------
+
+You can check if one string is a subset of another by turning them into `set` and doing equal or less comparison:
+
+```python
+s1 = set(s1)
+s2 = set(s2)
+if s1 <= s2: # if looking for proper subset use '<'
+    print('s1 is substring of s2')
+```
+
+------
+When asked to find a missing number in a list of consecutive integers, we need to find the difference of sum of _n_ consecutive numbers and sum of given list and return the difference. Formula to find sum of _n_ consecutive numbers is _n(n+1) // 2_. Example:
+
+```python
+def missingNumber(self, nums: List[int]) -> int:
+    S = len(nums) * (len(nums) + 1) // 2 # expected sum
+    return S - sum(nums)
+```
