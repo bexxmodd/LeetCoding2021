@@ -57,3 +57,29 @@ def missingNumber(self, nums: List[int]) -> int:
     S = len(nums) * (len(nums) + 1) // 2 # expected sum
     return S - sum(nums)
 ```
+
+------
+when asked to find a number that appears only ones in a list good approaches are to use `Counter` and return value which has counter == 0, or append items to set on first iteration and remove it if we encounter same item again. This will leave only numbers that appear ones. Example:
+
+```python
+def singleNumber(nums: List[int]) -> List[int]:
+    count = Counter(nums)
+    return [x for x in count if count[x] == 1]
+```
+
+--------
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+The points of interest are the peaks and valleys in the given graph. We need to find the largest peak following the smallest valley. We can maintain two variables - minprice and maxprofit corresponding to the smallest valley and maximum profit (maximum difference between selling price and minprice) obtained so far respectively.
+
+```python
+def maxProfit(self, prices: List[int]) -> int:
+    maxprofit = 0;
+    minprice = sys.maxsize
+    for p in prices:
+        if p < minprice:
+            minprice = p
+        elif p - minprice > maxprofit:
+            maxprofit = p - minprice
+    return maxprofit
+```
