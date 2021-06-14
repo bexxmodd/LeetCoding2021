@@ -29,6 +29,7 @@ for i in count:
     res.extend([val] * i)
 ```
 
+<br>
 -----
 **Stacks** are useful in certain recursive algorithms. Sometimes you need to push
 temporary data onto a stack as you recurse, but then remove them as you backtrack (for example, because
@@ -38,6 +39,7 @@ In breadth-first search, for example, we used a **queue** to store a list of the
 Each time we process a node, we add its adjacent nodes to the back of the queue. This allows us to process
 nodes in the order in which they are viewed.
 
+<br>
 --------
 
 You can check if one string is a subset of another by turning them into `set` and doing equal or less comparison:
@@ -49,6 +51,7 @@ if s1 <= s2: # if looking for proper subset use '<'
     print('s1 is substring of s2')
 ```
 
+<br>
 ------
 When asked to find a missing number in a list of consecutive integers, we need to find the difference of sum of _n_ consecutive numbers and sum of given list and return the difference. Formula to find sum of _n_ consecutive numbers is _n(n+1) // 2_. Example:
 
@@ -58,6 +61,7 @@ def missingNumber(self, nums: List[int]) -> int:
     return S - sum(nums)
 ```
 
+<br>
 ------
 when asked to find a number that appears only ones in a list good approaches are to use `Counter` and return value which has counter == 0, or append items to set on first iteration and remove it if we encounter same item again. This will leave only numbers that appear ones. Example:
 
@@ -66,6 +70,8 @@ def singleNumber(nums: List[int]) -> List[int]:
     count = Counter(nums)
     return [x for x in count if count[x] == 1]
 ```
+
+<br>
 
 --------
 You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
@@ -82,4 +88,22 @@ def maxProfit(self, prices: List[int]) -> int:
         elif p - minprice > maxprofit:
             maxprofit = p - minprice
     return maxprofit
+```
+
+<br>
+
+---------
+When asked to check if all the words are equal by moving charecter from one to another list we can calculate number of each char and check that each there is exact amount char for each char to be used in each word equally.
+
+For example:
+
+```python
+# Return true if you can make every string in words equal
+# using any number of operations, and false otherwise.
+
+def makeEqual(self, words: List[str]) -> bool:
+        counts, n = collections.Counter(''.join(words)), len(words)
+        # evaluate that each char's count is exactlly enough to be present in each word
+        # For this we use modulo operator, where n is the number of words in the list
+        return all([ c % n == 0 for c in counts.values() ])
 ```
